@@ -3,12 +3,12 @@ FROM ubuntu:22.04
 
 # Install required packages
 RUN apt-get update \
-    && apt-get install -y gnupg2 \
+    && apt-get install -y gnupg2 wget vim \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Add PostgreSQL Apt repository
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list \
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/$(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list \
     && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 
 # Install PostgreSQL client from the PostgreSQL Apt repository

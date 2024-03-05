@@ -9,5 +9,8 @@ WORKDIR /app
 # Copy entrypoint script into the container
 COPY entrypoint.sh entrypoint.sh
 
+# Set script to executable
+RUN chmod +x ./entrypoint.sh
+
 # Set the script as the entrypoint
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]

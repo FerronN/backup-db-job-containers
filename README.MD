@@ -1,0 +1,1 @@
+This repository supplies docker images for (multiple) database provider to dump it to a specific directory.

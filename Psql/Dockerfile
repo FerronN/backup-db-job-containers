@@ -6,12 +6,12 @@ RUN apt-get update \
     && apt-get install -y gnupg2 wget vim 
 
 # Add PostgreSQL Apt repository
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/$(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list \
-    && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' \
+    && curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
 
 # Install PostgreSQL client from the PostgreSQL Apt repository
 RUN apt-get update \
-    && apt-get install -y postgresql-client \
+    && apt-get install -y postgresql-client-16 \
     && apt-get clean
 
 # Create a directory for entrypoint and other files

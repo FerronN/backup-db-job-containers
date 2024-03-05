@@ -31,7 +31,7 @@ if [ -z "$PGPASSWORD" ]; then
 fi
 
 # Loop through all databases and backup each one
-databases=$(PGPASSWORD="$PGPASSWORD" psql -lqt -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" | cut -d \| -f 1 | grep -v -e '^ ' -e '^template' -e '^postgres')
+databases=$(PGPASSWORD="$PGPASSWORD" psql -lqt -h "$PGHOST" -p "$PGPORT" -U "$PGUSER" | cut -d \| -f 1 | grep -v -E '^\s*template|postgres')
 
 for db in $databases; do
     echo "Backing up database: $db"

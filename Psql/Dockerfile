@@ -3,8 +3,7 @@ FROM ubuntu:22.04
 
 # Install required packages
 RUN apt-get update \
-    && apt-get install -y gnupg2 wget vim \
-    && apt-get clean
+    && apt-get install -y gnupg2 wget vim 
 
 # Add PostgreSQL Apt repository
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/$(lsb_release -cs)-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list \
@@ -13,8 +12,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/$(lsb_release -cs)-pgdg ma
 # Install PostgreSQL client from the PostgreSQL Apt repository
 RUN apt-get update \
     && apt-get install -y postgresql-client \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get clean
 
 # Create a directory for entrypoint and other files
 WORKDIR /app

@@ -28,9 +28,9 @@ This Bash script automates the process of backing up PostgreSQL databases. It co
 
 2. Retrieves a list of databases from the PostgreSQL server, excluding system databases (`template`, `postgres`).
 
-3. Loops through each database and performs the following steps:
-   - Creates a backup filename using the database name and current timestamp.
-   - Initiates a `pg_dump` command to create a backup file for the database in custom format.
+3. Loops through each connectable database and performs the following steps:
+    - Creates a `.dump` backup filename using the database name and current timestamp.
+    - Initiates a `pg_dump` command to create a backup file for the database in custom format.
    - Saves the backup file in the specified backup directory.
 
 4. Prints status messages for each database backup.

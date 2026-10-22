@@ -11,6 +11,7 @@ This Bash script automates the process of backing up PostgreSQL databases. It co
   - `PGPORT`: PostgreSQL server port
   - `PGUSER`: PostgreSQL username with permission to access databases
   - `PGPASSWORD`: PostgreSQL user password
+  - `PGDATABASE` (optional): Database used to list available databases. Defaults to `postgres`.
 
 ## Usage
 
@@ -25,6 +26,7 @@ This Bash script automates the process of backing up PostgreSQL databases. It co
    - `PGPORT`: PostgreSQL server port
    - `PGUSER`: PostgreSQL username with permission to access databases
    - `PGPASSWORD`: PostgreSQL user password
+   - `PGDATABASE` (optional): Database used for the initial connection; defaults to `postgres`.
 
 2. Retrieves a list of databases from the PostgreSQL server, excluding system databases (`template`, `postgres`).
 

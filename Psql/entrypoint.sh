@@ -39,6 +39,7 @@ databases=$(PGPASSWORD="$PGPASSWORD" psql \
     --host="$PGHOST" \
     --port="$PGPORT" \
     --username="$PGUSER" \
+    --dbname="${PGDATABASE:-postgres}" \
     --no-align \
     --tuples-only \
     --command="SELECT datname FROM pg_database WHERE datallowconn AND NOT datistemplate AND datname <> 'postgres' ORDER BY datname;")
